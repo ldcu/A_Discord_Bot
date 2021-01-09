@@ -29,7 +29,7 @@ vasilica = vasile.copy()
 @client.event
 async def on_message(message):
 
-  id = client.get_guild(os.getenv('CLIENT_ID'))
+  id = client.get_guild(792574419066159105)
 
   # Send Vlad the Impaler messages.
   if message.content == ".tepes":
