@@ -53,6 +53,11 @@ async def on_message(message):
     embed.add_field(name=".membri", value="Numărul de membri de pe server.")
     await message.channel.send(content=None, embed=embed)
 
+  # Flip a coin.
+  if message.content == ".dacubanu":
+    variable = ["Cap.", "Pajură."]
+    await message.channel.send("{}".format(random.choice(variable)))
+
 async def on_member_join(member):
     for channel in member.guild.channels:
         if str(channel) == "general": # We check to make sure we are sending the message in the general channel
