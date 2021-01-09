@@ -51,6 +51,7 @@ async def on_message(message):
     embed.add_field(name=".tepes", value="Citat motivațional de la Vlad Țepeș.")
     embed.add_field(name=".vasile", value="Vrăjeală ieftină.")
     embed.add_field(name=".membri", value="Numărul de membri de pe server.")
+    embed.add_field(name=".dacubanu", value="Cap și pajură.")
     await message.channel.send(content=None, embed=embed)
 
   # Flip a coin.
