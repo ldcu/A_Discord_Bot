@@ -56,6 +56,10 @@ async def on_message(message):
   # Display current number of members.
   if message.content == ".membri":
     await message.channel.send(f"""Sunt în total {id.member_count} membri pe server.""")
+  
+  # Make the bot to agree with you on everything.
+  if message.content.endswith(", nu?"):
+    await message.channel.send("Da, coaie, așa este.")
 
   # Return all possible commands that can be used.
   if message.content == ".ba":
