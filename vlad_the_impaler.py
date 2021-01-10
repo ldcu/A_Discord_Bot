@@ -2,6 +2,7 @@ import discord
 import os
 import random
 from pymongo import MongoClient
+from keep_alive import keep_alive
 
 client = discord.Client()
 
