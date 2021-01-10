@@ -2,7 +2,6 @@ import discord
 import os
 import random
 from pymongo import MongoClient
-import keep_alive
 
 client = discord.Client()
 
@@ -77,5 +76,4 @@ async def on_member_join(member):
         if str(channel) == "general": # We check to make sure we are sending the message in the general channel
             await channel.send_message(f"""Welcome to the server, {member.mention}!""")
 
-keep_alive.keep_alive()
 client.run(os.getenv('TOKEN'))
