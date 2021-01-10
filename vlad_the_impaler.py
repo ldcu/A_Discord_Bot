@@ -77,4 +77,5 @@ async def on_member_join(member):
         if str(channel) == "general": # We check to make sure we are sending the message in the general channel
             await channel.send_message(f"""Welcome to the server, {member.mention}!""")
 
+keep_alive()
 client.run(os.getenv('TOKEN'))
