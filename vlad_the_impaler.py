@@ -9,22 +9,29 @@ cluster = MongoClient(os.getenv('MONGODB_URI'), 27017)
 db = cluster["discord"]
 collection_vt = db["vlad_the_impaler"]
 collection_v = db["vasile"]
+collection_lj = db["lawyer_jokes"]
 
 @client.event
 async def on_ready():
   print(f"We have logged in as {client.user}.")
 
-# Getting quotes for Vlad the Impaler
+# Getting quotes for Vlad the Impaler.
 vlad_the_impaler = []
 for vorbele_lu_tepes in collection_vt.find():
   vlad_the_impaler.append(vorbele_lu_tepes["quote"])
 tepes = vlad_the_impaler.copy()
 
-# Getting quotes for Vasile
+# Getting quotes for Vasile.
 vasile = []
 for vorbele_lu_vasile in collection_v.find():
   vasile.append(vorbele_lu_vasile["quote"])
 vasilica = vasile.copy()
+
+# Getting lawyer jokes.
+lawyer_jokes = []
+for joke in collection_lj.find():
+  lawyer_jokes.append(joke["joke"])
+jokes = lawyer_jokes.copy()
 
 @client.event
 async def on_message(message):
@@ -39,6 +46,11 @@ async def on_message(message):
   # Send Vasile messages.
   if message.content == ".vasile":
     mesaj = random.choice(vasilica)
+    await message.channel.send(mesaj)
+
+  # Send lawyer jokes.
+  if message.content == ".glumita":
+    mesaj = random.choice(jokes)
     await message.channel.send(mesaj)
 
   # Display current number of members.
