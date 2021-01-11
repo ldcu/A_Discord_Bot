@@ -19,19 +19,16 @@ async def on_ready():
 vlad_the_impaler = []
 for vorbele_lu_tepes in collection_vt.find():
   vlad_the_impaler.append(vorbele_lu_tepes["quote"])
-tepes = vlad_the_impaler.copy()
 
 # Getting quotes for Vasile.
 vasile = []
 for vorbele_lu_vasile in collection_v.find():
   vasile.append(vorbele_lu_vasile["quote"])
-vasilica = vasile.copy()
 
 # Getting lawyer jokes.
 lawyer_jokes = []
 for joke in collection_lj.find():
   lawyer_jokes.append(joke["joke"])
-jokes = lawyer_jokes.copy()
 
 @client.event
 async def on_message(message):
@@ -40,17 +37,17 @@ async def on_message(message):
 
   # Send Vlad the Impaler messages.
   if message.content == ".tepes":
-    mesaj = random.choice(tepes)
+    mesaj = random.choice(vlad_the_impaler)
     await message.channel.send(mesaj)
 
   # Send Vasile messages.
   if message.content == ".vasile":
-    mesaj = random.choice(vasilica)
+    mesaj = random.choice(vasile)
     await message.channel.send(mesaj)
 
   # Send lawyer jokes.
   if message.content == ".glumita":
-    mesaj = random.choice(jokes)
+    mesaj = random.choice(lawyer_jokes)
     await message.channel.send(mesaj)
 
   # Display current number of members.
