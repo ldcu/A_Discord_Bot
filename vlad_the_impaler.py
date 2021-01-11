@@ -59,7 +59,8 @@ async def on_message(message):
   
   # Make the bot to agree with you on everything.
   if message.content.endswith(", nu?"):
-    await message.channel.send("Da, coaie, așa este.")
+    answer = ["Da, coaie, așa este.", "Posibil.", "Nu, frate, greșești.", "Da' de unde știi tu, mă?"]
+    await message.channel.send("{}".format(random.choice(answer)))
 
   # Return all possible commands that can be used.
   if message.content == ".ba":
@@ -72,8 +73,8 @@ async def on_message(message):
 
   # Flip a coin.
   if message.content == ".dacubanu":
-    variable = ["Cap.", "Pajură."]
-    await message.channel.send("{}".format(random.choice(variable)))
+    answer = ["Cap.", "Pajură."]
+    await message.channel.send("{}".format(random.choice(answer)))
 
 async def on_member_join(member):
     for channel in member.guild.channels:
