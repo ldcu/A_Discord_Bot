@@ -37,18 +37,15 @@ async def on_message(message):
 
   # Send Vlad the Impaler messages.
   if message.content == ".tepes":
-    mesaj = random.choice(vlad_the_impaler)
-    await message.channel.send(mesaj)
+    await message.channel.send(random.choice(vlad_the_impaler))
 
   # Send Vasile messages.
   if message.content == ".vasile":
-    mesaj = random.choice(vasile)
-    await message.channel.send(mesaj)
+    await message.channel.send(random.choice(vasile))
 
   # Send lawyer jokes.
   if message.content == ".glumita":
-    mesaj = random.choice(lawyer_jokes)
-    await message.channel.send(mesaj)
+    await message.channel.send(random.choice(lawyer_jokes))
 
   # Display current number of members.
   if message.content == ".membri":
