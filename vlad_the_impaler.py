@@ -72,7 +72,7 @@ async def on_message(message):
     await message.channel.send(random.choice(answer))
 
 @client.event
-async def on_raw_message_delete(payload):
+async def on_raw_message_delete(payload): # Logging deleted messages.
     channel = client.get_channel(798663330516172830)
     message = payload.cached_message
     await channel.send(f"[{datetime.datetime.now()}] {message.author} a șters mesajul ăsta în #{message.channel} [{message.content}]")
