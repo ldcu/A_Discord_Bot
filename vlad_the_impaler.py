@@ -72,10 +72,10 @@ async def on_message(message):
 
 @client.event
 async def on_raw_message_delete(self, payload):
-    # message = payload.cached_message
+    message = payload.cached_message
     channel = client.get_channel(798663330516172830)
-    message = await channel.fetch_message(payload.message_id)
-    await channel.send(f"{message.author} a șters mesajul ăsta de pe #{message.channel}: {message.content}")
+    # message = await channel.fetch_message(payload.message_id)
+    await channel.send(f"{message.author} deleted in #{message.channel}: {message.content}")
 
 @client.event
 async def on_member_join(member):
