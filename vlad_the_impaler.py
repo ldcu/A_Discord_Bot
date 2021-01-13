@@ -70,6 +70,13 @@ async def on_message(message):
     answer = ["Cap.", "Pajură."]
     await message.channel.send(random.choice(answer))
 
+@client.event
+async def on_raw_message_delete(message):
+  channel = client.get_channel(798663330516172830)
+  msg = f"{message.author} a șters mesajul ăsta de pe #{message.channel}: {message.content}"
+  await channel.send(msg)
+
+@client.event
 async def on_member_join(member):
     for channel in member.guild.channels:
         if str(channel) == "general": # We check to make sure we are sending the message in the general channel
