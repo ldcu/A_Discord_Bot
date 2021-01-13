@@ -73,8 +73,8 @@ async def on_message(message):
 
 @client.event
 async def on_raw_message_delete(payload): # Logging deleted messages.
-    channel = client.get_channel(798663330516172830)
-    message = payload.cached_message
+    channel = client.get_channel(798663330516172830) # Channel where the logs are being sent to.
+    message = payload.cached_message # Getting cached message. The proper way to delete a message is with message_id, don't rely on this all the time.
     await channel.send(f"[{datetime.datetime.now()}] {message.author} a șters mesajul ăsta în #{message.channel} [{message.content}]")
 
 @client.event
