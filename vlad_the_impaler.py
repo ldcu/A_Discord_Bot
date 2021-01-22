@@ -62,8 +62,11 @@ async def on_message(message):
     answer = ["Cap.", "Pajură."]
     await message.channel.send(random.choice(answer))
 
+  # Make it choose one of the options you're giving the bot.
   if message.content.startswith(".alege"):
-    await message.channel.send("> {}\n".format(", ".join(message.content)))
+    choices = message.content.split()
+    del choices[0]
+    await message.channel.send(random.choice(choices))
 
   # Return all possible commands that can be used.
   if message.content == ".ba":
