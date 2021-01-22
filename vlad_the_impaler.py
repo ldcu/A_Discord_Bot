@@ -57,6 +57,14 @@ async def on_message(message):
     answer = ["Da, coaie, așa este.", "Posibil.", "Nu, frate, greșești.", "Da' de unde știi tu, mă?"]
     await message.channel.send(random.choice(answer))
 
+  # Flip a coin.
+  if message.content == ".dacubanu":
+    answer = ["Cap.", "Pajură."]
+    await message.channel.send(random.choice(answer))
+
+  if message.content == ".alege":
+    await client.send_message(message.channel, "> {}\n".format(", ".join(message.content)))
+
   # Return all possible commands that can be used.
   if message.content == ".ba":
     embed = discord.Embed(title="Vlad the Impaler here to serve you!", description="Poți să folosești următoarele comenzi pe mine.")
@@ -65,11 +73,6 @@ async def on_message(message):
     embed.add_field(name=".membri", value="Numărul de membri de pe server.")
     embed.add_field(name=".dacubanu", value="Cap și pajură.")
     await message.channel.send(content=None, embed=embed)
-
-  # Flip a coin.
-  if message.content == ".dacubanu":
-    answer = ["Cap.", "Pajură."]
-    await message.channel.send(random.choice(answer))
 
 @client.event
 async def on_raw_message_delete(payload): # Logging deleted messages.
