@@ -66,7 +66,7 @@ async def on_message(message):
   if message.content.startswith(".alege"):
     choices = message.content.split()
     del choices[0]
-    await message.channel.send(random.choice(choices))
+    await message.channel.send(f"> {random.choice(choices)}")
 
   # Return all possible commands that can be used.
   if message.content == ".ba":
