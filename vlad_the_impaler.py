@@ -62,8 +62,8 @@ async def on_message(message):
     answer = ["Cap.", "Pajură."]
     await message.channel.send(random.choice(answer))
 
-  if message.content == ".alege":
-    await client.send_message(message.channel, "> {}\n".format(", ".join(message.content)))
+  if message.content.startswith(".alege"):
+    await message.channel.send("> {}\n".format(", ".join(message.content)))
 
   # Return all possible commands that can be used.
   if message.content == ".ba":
