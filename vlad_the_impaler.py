@@ -75,6 +75,8 @@ async def on_message(message):
     embed.add_field(name=".vasile", value="Vrăjeală ieftină.")
     embed.add_field(name=".membri", value="Numărul de membri de pe server.")
     embed.add_field(name=".dacubanu", value="Cap și pajură.")
+    embed.add_field(name=".glumita", value="Lawyer jokes.")
+    embed.add_field(name=".alege", value="Eu decid pentru tine!")
     await message.channel.send(content=None, embed=embed)
 
 @client.event
