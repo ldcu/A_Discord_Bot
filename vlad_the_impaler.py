@@ -62,7 +62,7 @@ async def on_message(message):
     answer = ["Cap.", "Pajură."]
     await message.channel.send(random.choice(answer))
 
-  # Make it choose one of the options you're giving the bot.
+  # Choice maker.
   if message.content.startswith(".alege"):
     choices = message.content.split()
     del choices[0]
