@@ -38,29 +38,29 @@ async def on_message(message):
 
   # Send Vlad the Impaler messages.
   if message.content == ".tepes":
-    await message.channel.send(random.choice(vlad_the_impaler))
+    await message.channel.send(f"> {random.choice(vlad_the_impaler)}")
 
   # Send Vasile messages.
   if message.content == ".vasile":
-    await message.channel.send(random.choice(vasile))
+    await message.channel.send(f"> {random.choice(vasile)}")
 
   # Send lawyer jokes.
   if message.content == ".glumita":
-    await message.channel.send(random.choice(lawyer_jokes))
+    await message.channel.send(f"> {random.choice(lawyer_jokes)}")
 
   # Display current number of members.
   if message.content == ".membri":
-    await message.channel.send(f"""Sunt în total {id.member_count} membri pe server.""")
+    await message.channel.send(f"""> Sunt în total {id.member_count} membri pe server.""")
   
   # Make the bot to agree with you on everything.
   if message.content.endswith(", nu?"):
     answer = ["Da, coaie, așa este.", "Posibil.", "Nu, frate, greșești.", "Da' de unde știi tu, mă?"]
-    await message.channel.send(random.choice(answer))
+    await message.channel.send(f"> {random.choice(answer)}")
 
   # Flip a coin.
   if message.content == ".dacubanu":
     answer = ["Cap.", "Pajură."]
-    await message.channel.send(random.choice(answer))
+    await message.channel.send(f"> {random.choice(answer)}")
 
   # Choice maker.
   if message.content.startswith(".alege"):
