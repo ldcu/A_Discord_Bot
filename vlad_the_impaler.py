@@ -78,7 +78,7 @@ async def on_message(message):
         choices = message.content.split()
         del choices[0]
         stock = yf.Ticker(choices[0])
-        await message.channel.send(f"> Open: ${stock.info['open']} | High: ${stock.info['dayHigh']}")
+        await message.channel.send(f"> {stock.info['symbol']} ({stock.info['longName']}) | Open: ${stock.info['open']} | High: ${stock.info['dayHigh']} | {stock.info['regularMarketVolume']}")
 
     # Stock share price. Chart.
     if message.content.startswith(".stock_chart"):
