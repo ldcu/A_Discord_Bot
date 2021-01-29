@@ -111,6 +111,7 @@ async def on_message(message):
         embed.add_field(name=".alege", value="Voia mea este poruncă!")
         embed.add_field(name=".stock", value="Stock price.")
         embed.add_field(name=".stock_chart", value="La fel ca .stock, doar că cu diagramă.")
+        embed.add_field(name=".look", value="I have nothing to say.")
         await message.channel.send(content=None, embed=embed)
 
 
