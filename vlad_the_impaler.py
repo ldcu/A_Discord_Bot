@@ -89,7 +89,7 @@ async def on_message(message):
         stock = yf.Ticker(choices[0]) # Stock name.
         hist = stock.history(period="1mo") # Period.
         hist['Close'].plot(figsize=(9, 5)) # Building the chart.
-        plt.title(f"{choices[0]} - 1 MONTH PERIOD") # Title.
+        plt.title(f"({stock.info['symbol']}) ON 1 MONTH PERIOD") # Title.
         plt.savefig(fname='plot') # Saving the generated chart so we can send it over in a message.
         await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
         os.remove('plot.png') # Removing the chart so we won't occupy memory.
