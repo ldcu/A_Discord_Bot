@@ -80,7 +80,7 @@ async def on_message(message):
         stock = yf.Ticker(choices[0])
         todays_data = stock.history(period='1d')
         # await message.channel.send(f"> {stock.info['symbol']} ({stock.info['longName']}) | Open: ${stock.info['open']} | High: ${stock.info['dayHigh']} | {stock.info['regularMarketVolume']}")
-        await message.channel.send(f"> {stock.info['symbol']} ({stock.info['longName']}) | Price: ${todays_data['Close'][0]} | Volume: {stock.info['regularMarketVolume']}")
+        await message.channel.send(f"> {stock.info['symbol']} ({stock.info['longName']}) | Price: ${round(todays_data['Close'][0], 2)} | Volume: {stock.info['regularMarketVolume']}")
 
     # Stock share price. Chart.
     if message.content.startswith(".chart"):
