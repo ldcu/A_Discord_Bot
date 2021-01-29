@@ -92,6 +92,11 @@ async def on_message(message):
         await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
         os.remove('plot.png') # Removing the chart so we won't occupy memory.
 
+    # I have nothing to say.
+    if message.content == ".look":
+        look = "Look, if I am going to be honest with you, in my own humble opinion (without being sentimental, of course), without offending anyone who thinks differently, from my own point of view, but also by looking into this matter in a distinctive perspective, I would like to say I have nothing to say."
+        await message.channel.send(f"> {look}")
+
     # Return all possible commands that can be used.
     if message.content == ".ba":
         embed = discord.Embed(title="Vlad the Impaler here to serve you!",
