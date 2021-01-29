@@ -78,7 +78,7 @@ async def on_message(message):
         choices = message.content.split()
         del choices[0]
         stock = yf.Ticker(choices[0])
-        await message.channel.send(f"> Open: {stock.info['open']}, High: {stock.info['dayHigh']}, Currency: {stock.info['currency']}")
+        await message.channel.send(f"> Open: ${stock.info['open']} | High: ${stock.info['dayHigh']}")
 
     # Stock share price. Chart.
     if message.content.startswith(".stock_chart"):
@@ -99,13 +99,10 @@ async def on_message(message):
 
     # Return all possible commands that can be used.
     if message.content == ".ba":
-        embed = discord.Embed(title="Vlad the Impaler here to serve you!",
-                              description="Poți să folosești următoarele comenzi pe mine.")
-        embed.add_field(
-            name=".tepes", value="Citat motivațional de la Vlad Țepeș.")
+        embed = discord.Embed(title="Vlad the Impaler here to serve you!", description="Poți să folosești următoarele comenzi pe mine.")
+        embed.add_field(name=".tepes", value="Citat motivațional de la Vlad Țepeș.")
         embed.add_field(name=".vasile", value="Vrăjeală ieftină.")
-        embed.add_field(
-            name=".membri", value="Numărul de membri de pe server.")
+        embed.add_field(name=".membri", value="Numărul de membri de pe server.")
         embed.add_field(name=".dacubanu", value="Cap și pajură.")
         embed.add_field(name=".glumita", value="Lawyer jokes.")
         embed.add_field(name=".alege", value="Voia mea este poruncă!")
