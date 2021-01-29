@@ -93,6 +93,7 @@ async def on_message(message):
         plt.savefig(fname='plot') # Saving the generated chart so we can send it over in a message.
         await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
         os.remove('plot.png') # Removing the chart so we won't occupy memory.
+        plt.clf()
 
     # I have nothing to say.
     if message.content == ".look":
