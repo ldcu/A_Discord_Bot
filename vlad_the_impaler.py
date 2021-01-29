@@ -4,6 +4,7 @@ import random
 import datetime
 from pymongo import MongoClient
 import yfinance as yf
+import matplotlib.pyplot as plt
 
 client = discord.Client()
 
@@ -73,11 +74,23 @@ async def on_message(message):
         await message.channel.send(f"> {random.choice(choices)}")
 
     # Stock share price.
-    if message.content.startswith(".stock"):
+    if message.content.startswith(".stock "):
         choices = message.content.split()
         del choices[0]
         stock = yf.Ticker(choices[0])
         await message.channel.send(f"> Open: {stock.info['open']}, High: {stock.info['dayHigh']}, Currency: {stock.info['currency']}")
+
+    # Stock share price. Chart.
+    if message.content.startswith(".stock_chart"):
+        choices = message.content.split()
+        del choices[0] # Deleting the first element, which is the command itself.
+        stock = yf.Ticker(choices[0]) # Stock name.
+        hist = stock.history(period="1mo") # Period.
+        hist['Close'].plot(figsize=(9, 5)) # Building the chart.
+        plt.title(f"{choices[0]} - 1 MONTH PERIOD") # Title.
+        plt.savefig(fname='plot') # Saving the generated chart so we can send it over in a message.
+        await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
+        os.remove('plot.png') # Removing the chart so we won't occupy memory.
 
     # Return all possible commands that can be used.
     if message.content == ".ba":
