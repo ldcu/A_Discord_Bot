@@ -74,7 +74,7 @@ async def on_message(message):
         await message.channel.send(f"> {random.choice(choices)}")
 
     # Stock share price.
-    if message.content.startswith(".stock "):
+    if message.content.startswith(".stock"):
         choices = message.content.split()
         del choices[0]
         stock = yf.Ticker(choices[0])
@@ -83,17 +83,17 @@ async def on_message(message):
         await message.channel.send(f"> {stock.info['symbol']} ({stock.info['longName']}) | Price: ${todays_data['Close'][0]} | Volume: {stock.info['regularMarketVolume']}")
 
     # Stock share price. Chart.
-    if message.content.startswith(".stock_chart"):
+    if message.content.startswith(".chart"):
         choices = message.content.split()
         del choices[0] # Deleting the first element, which is the command itself.
         stock = yf.Ticker(choices[0]) # Stock name.
         hist = stock.history(period="1mo") # Period.
         hist['Close'].plot(figsize=(9, 5)) # Building the chart.
-        plt.title(f"({stock.info['symbol']}) ON 1 MONTH PERIOD") # Title.
+        plt.title(f"({stock.info['symbol']}) ON ONE MONTH PERIOD") # Title.
         plt.savefig(fname='plot') # Saving the generated chart so we can send it over in a message.
         await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
         os.remove('plot.png') # Removing the chart so we won't occupy memory.
-        plt.clf()
+        plt.clf() # Clear the current figure. Otherwise the cache memory will conflict.
 
     # I have nothing to say.
     if message.content == ".look":
@@ -110,7 +110,7 @@ async def on_message(message):
         embed.add_field(name=".glumita", value="Lawyer jokes.")
         embed.add_field(name=".alege", value="Voia mea este poruncă!")
         embed.add_field(name=".stock", value="Stock price.")
-        embed.add_field(name=".stock_chart", value="La fel ca .stock, doar că cu diagramă.")
+        embed.add_field(name=".chart", value="La fel ca .stock, doar că cu diagramă.")
         embed.add_field(name=".look", value="I have nothing to say.")
         await message.channel.send(content=None, embed=embed)
 
