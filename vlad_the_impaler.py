@@ -88,7 +88,6 @@ async def on_message(message):
         stock = yf.Ticker(choices[0]) # Stock name.
         hist = stock.history(period="1mo") # Period.
         hist['Close'].plot(figsize=(9, 5)) # Building the chart.
-        plt.style.use("seaborn")
         plt.title(f"{stock.info['symbol']}") # Title.
         plt.savefig(fname='plot') # Saving the generated chart so we can send it over in a message.
         await message.channel.send(file=discord.File('plot.png')) # Providing the chart.
@@ -99,6 +98,11 @@ async def on_message(message):
     if message.content == ".look":
         look = "Look, if I am going to be honest with you - in my own humble opinion, without being sentimental, of course, without offending anyone who thinks differently, from my own point of view, but also by looking into this matter in a distinctive perspective - I would like to say I have nothing to say."
         await message.channel.send(f"> {look}")
+
+    # I have nothing to say.
+    if message.content == ".avatar":
+        author = message.author
+        await message.channel.send(f"> {author.avatar_url}")
 
     # Return all possible commands that can be used.
     if message.content == ".ba":
