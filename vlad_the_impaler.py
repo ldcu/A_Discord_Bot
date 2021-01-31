@@ -5,6 +5,9 @@ import datetime
 from pymongo import MongoClient
 import yfinance as yf
 import matplotlib.pyplot as plt
+from bs4 import BeautifulSoup
+import urllib3 as url
+import certifi as cert
 
 client = discord.Client()
 
@@ -99,10 +102,22 @@ async def on_message(message):
         look = "Look, if I am going to be honest with you - in my own humble opinion, without being sentimental, of course, without offending anyone who thinks differently, from my own point of view, but also by looking into this matter in a distinctive perspective - I would like to say I have nothing to say."
         await message.channel.send(f"> {look}")
 
-    # I have nothing to say.
+    # Return link for your profile picture.
     if message.content == ".avatar":
         author = message.author
         await message.channel.send(f"> {author.avatar_url}")
+
+    # Returns from 'dexonline.ro' definitions for words.
+    if message.startswith(".dex"):
+        word = message.content.split()
+        del word[0]
+
+        http = url.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=cert.where())
+        html_doc = http.request('GET', f'https://dexonline.ro/definitie/{word[0]}')
+        soup = BeautifulSoup(html_doc.data, 'html.parser')
+        definitie = soup.find("span", class_="def html meaningBody").get_text()
+
+        await message.channel.send(f">{definitie}")
 
     # Return all possible commands that can be used.
     if message.content == ".ba":
@@ -116,6 +131,8 @@ async def on_message(message):
         embed.add_field(name=".stock", value="Stock price.")
         embed.add_field(name=".chart", value="La fel ca .stock, doar că cu diagramă.")
         embed.add_field(name=".look", value="I have nothing to say.")
+        embed.add_field(name=".avatar", value="Get profile picture.")
+        embed.add_field(name=".dex", value="Definiții pt. cuvinte.")
         await message.channel.send(content=None, embed=embed)
 
 
