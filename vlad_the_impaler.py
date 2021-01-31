@@ -41,7 +41,7 @@ for joke in collection_lj.find():
 # Getting stoic thoughts.
 stoic_thoughts = []
 for quote in collection_q.find():
-    stoic_thoughts.append(quote["quote"])
+    stoic_thoughts.append(f'{quote["quote"]} by {quote["author"]} - {quote["source"]}')
 
 
 @client.event
