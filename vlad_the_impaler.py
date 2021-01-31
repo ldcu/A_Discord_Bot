@@ -16,6 +16,7 @@ db = cluster["discord"]
 collection_vt = db["vlad_the_impaler"]
 collection_v = db["vasile"]
 collection_lj = db["lawyer_jokes"]
+collection_q = db["quotes"]
 
 
 @client.event
@@ -36,6 +37,11 @@ for vorbele_lu_vasile in collection_v.find():
 lawyer_jokes = []
 for joke in collection_lj.find():
     lawyer_jokes.append(joke["joke"])
+
+# Getting stoic thoughts.
+stoic_thoughts = []
+for quote in collection_q.find():
+    stoic_thoughts.append(quote["quote"])
 
 
 @client.event
@@ -117,6 +123,10 @@ async def on_message(message):
         definitie = soup.find("span", class_="def html meaningBody").get_text()
         await message.channel.send(f">{definitie}")
 
+    # Send stoic thoughts.
+    if message.content == ".stoic":
+        await message.channel.send(f"> {random.choice(stoic_thoughts)}")
+
     # Return all possible commands that can be used.
     if message.content == ".ba":
         embed = discord.Embed(title="Vlad the Impaler here to serve you!", description="Poți să folosești următoarele comenzi pe mine.")
@@ -131,6 +141,7 @@ async def on_message(message):
         embed.add_field(name=".look", value="I have nothing to say.")
         embed.add_field(name=".avatar", value="Get profile picture.")
         embed.add_field(name=".dex", value="Definiții pt. cuvinte.")
+        embed.add_field(name=".stoic", value="Random quote from Seneca, Epictetus & Marcus Aurelius.")
         await message.channel.send(content=None, embed=embed)
 
 
