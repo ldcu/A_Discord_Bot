@@ -111,12 +111,10 @@ async def on_message(message):
     if message.content.startswith(".dex"):
         word = message.content.split()
         del word[0]
-
         http = url.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=cert.where())
         html_doc = http.request('GET', f'https://dexonline.ro/definitie/{word[0]}')
         soup = BeautifulSoup(html_doc.data, 'html.parser')
         definitie = soup.find("span", class_="def html meaningBody").get_text()
-
         await message.channel.send(f">{definitie}")
 
     # Return all possible commands that can be used.
