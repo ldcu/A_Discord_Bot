@@ -108,7 +108,7 @@ async def on_message(message):
         await message.channel.send(f"> {author.avatar_url}")
 
     # Returns from 'dexonline.ro' definitions for words.
-    if message.startswith(".dex"):
+    if message.content.startswith(".dex"):
         word = message.content.split()
         del word[0]
 
