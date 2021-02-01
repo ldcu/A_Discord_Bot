@@ -1,1 +1,1 @@
-worker: python vlad_the_impaler.py
+worker: python a_discord_bot.py
