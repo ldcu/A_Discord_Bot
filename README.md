@@ -1,7 +1,7 @@
-# A_Discord_Bot
+# a_discord_bot
 
-Discord bot for a server I created.
+Discord bot written in Python.
 
-The 'Procfile' file is for deploying the project to 'heroku.com'.
+The `Procfile` file is for deploying the project to [heroku.com](https://www.heroku.com/).
 
-Highly recommend Heroku for running the Discord bot, instead of repl.it let's say, as if you add a valid Billing address you get 1,000 hours of non-stop runtime for your bot.
+Highly recommend Heroku for running the Discord bot, instead of [repl.it](https://repl.it/) let's say, as if you add a valid billing address you get 1,000 hours of non-stop runtime for your bot per month.
